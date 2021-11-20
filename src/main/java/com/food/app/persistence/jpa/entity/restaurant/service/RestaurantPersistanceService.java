@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,6 +33,10 @@ public class RestaurantPersistanceService {
     public void deleteRestaurant(Long id){
         log.info("Deleted Resturant id : {}", id);
         restaurantRespository.deleteById(id);
+    }
+
+    public List<Restaurant> getAllRestaurant(){
+        return (List<Restaurant>) restaurantRespository.findAll();
     }
 
 

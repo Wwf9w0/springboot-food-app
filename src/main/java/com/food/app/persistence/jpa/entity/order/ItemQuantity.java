@@ -19,4 +19,8 @@ public class ItemQuantity {
     private String name;
     private BigDecimal price;
     private int quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 }

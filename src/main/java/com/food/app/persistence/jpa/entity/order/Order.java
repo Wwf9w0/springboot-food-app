@@ -18,6 +18,7 @@ public class Order {
     private Long id;
 
     private String restaurantId;
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<ItemQuantity> items;
     private BigDecimal totalPrice;
     private Long orderTime;

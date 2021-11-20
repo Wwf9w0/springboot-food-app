@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class CampaignService {
+public class CampaignPersistenceService {
 
     private final CampaignRepository campaignRepository;
 

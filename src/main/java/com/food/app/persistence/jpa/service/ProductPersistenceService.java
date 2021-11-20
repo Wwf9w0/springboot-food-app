@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class ProductService {
+public class ProductPersistenceService {
 
     private final ProductRepository productRepository;
 

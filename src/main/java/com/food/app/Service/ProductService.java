@@ -1,7 +1,6 @@
 package com.food.app.Service;
 
 import com.food.app.persistence.jpa.entity.Product;
-import com.food.app.persistence.jpa.entity.enums.CategoryType;
 import com.food.app.persistence.jpa.repository.ProductRepository;
 import com.food.app.persistence.jpa.service.ProductPersistenceService;
 import lombok.RequiredArgsConstructor;

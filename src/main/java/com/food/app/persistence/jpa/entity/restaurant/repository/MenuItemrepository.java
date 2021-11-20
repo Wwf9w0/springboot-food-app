@@ -7,10 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 @Repository
-public interface MenuItemrepository extends CrudRepository<MenuItem, String> {
-
-    Optional<MenuItem> findByRestaurantId(Long id);
-
+public interface MenuItemrepository extends CrudRepository<MenuItem, Long> {
 
     Optional<MenuItem> findByName(String name);
 }

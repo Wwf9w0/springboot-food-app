@@ -16,19 +16,23 @@ public class MenuıtemPersistenceService  {
 
     private final MenuItemrepository menuItemrepository;
 
-    public Optional<MenuItem> findByRestaurantId(Long id) {
-        return menuItemrepository.findByRestaurantId(id);
-    }
-
-    public Optional<MenuItem> findByName(String name) {
+    public Optional<MenuItem> getByName(String name) {
+        log.info("Find MenuItem Name: {}" , name);
         return menuItemrepository.findByName(name);
     }
     
     public MenuItem createMenuItem(MenuItem menuItem){
+        log.info("Created MenuItem : {}" , menuItem);
         return menuItemrepository.save(menuItem);
     }
     
     public MenuItem updateMenuItem(MenuItem menuItem){
+        log.info("MenuItem Updated id : {}", menuItem.getId());
         return menuItemrepository.save(menuItem);
+    }
+
+    public void deleteMenuItem(Long id){
+        log.info("Delete MenuItem id : {}", id);
+        menuItemrepository.deleteById(id);
     }
 }

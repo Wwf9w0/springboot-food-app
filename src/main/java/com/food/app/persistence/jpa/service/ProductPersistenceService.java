@@ -36,11 +36,6 @@ public class ProductPersistenceService {
     }
 
     public Product updateProduct(Product product){
-       Optional<Product> p = productRepository.findById(product.getId());
-
-       if (!Objects.nonNull(p)){
-           return null;
-       }
        log.info("Updated Product id :{}", product.getId());
        return productRepository.save(product);
     }

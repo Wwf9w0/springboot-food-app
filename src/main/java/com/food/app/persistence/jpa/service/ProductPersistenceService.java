@@ -26,12 +26,13 @@ public class ProductPersistenceService {
     }
 
     public Product addProduct(Product product){
+        log.info("Product Added");
         return productRepository.save(product);
     }
 
     public void deleteProduct(Long id){
         productRepository.deleteById(id);
-        log.info("Product deleted : {}" , id);
+        log.info("Product deleted id: {}" , id);
     }
 
     public Product updateProduct(Product product){
@@ -40,6 +41,7 @@ public class ProductPersistenceService {
        if (!Objects.nonNull(p)){
            return null;
        }
+       log.info("Updated Product id :{}", product.getId());
        return productRepository.save(product);
     }
 

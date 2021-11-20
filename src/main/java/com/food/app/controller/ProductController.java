@@ -3,17 +3,13 @@ package com.food.app.controller;
 import com.food.app.Service.ProductService;
 import com.food.app.persistence.jpa.entity.Product;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@Slf4j
 @RequestMapping(value = "/api")
 public class ProductController {
 

@@ -15,5 +15,4 @@ public class Campaign {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Integer campaignType;
 }

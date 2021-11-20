@@ -21,6 +21,5 @@ public class Category {
     @JoinColumn(name = "product")
     private Product product;
 
-    private Long categoryType;
 
 }

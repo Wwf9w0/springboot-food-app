@@ -18,9 +18,6 @@ public class Category {
 
     private String categoryName;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "product")
-    private Product product;
 
 
 }

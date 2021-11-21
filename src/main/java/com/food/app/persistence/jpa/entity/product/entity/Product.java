@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Data
@@ -22,8 +23,5 @@ public class Product {
     private BigDecimal price;
     private String description;
     private String saleInformation;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Category category;
 
 }

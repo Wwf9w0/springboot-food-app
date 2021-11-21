@@ -40,7 +40,6 @@ public class ProductService {
         Optional<Product> productOptional = productRepository.findById(product.getId());
         Product pr = productOptional.get();
         if (productOptional.isPresent()) {
-            pr.setCategory(productOptional.get().getCategory());
             pr.setProductName(productOptional.get().getProductName());
             pr.setDescription(productOptional.get().getDescription());
             pr.setPrice(productOptional.get().getPrice());

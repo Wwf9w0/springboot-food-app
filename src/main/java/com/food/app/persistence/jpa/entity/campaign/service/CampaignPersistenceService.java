@@ -1,9 +1,7 @@
-package com.food.app.persistence.jpa.service;
+package com.food.app.persistence.jpa.entity.campaign.service;
 
-import com.food.app.persistence.jpa.entity.Campaign;
-import com.food.app.persistence.jpa.entity.Category;
-import com.food.app.persistence.jpa.repository.CampaignRepository;
-import com.food.app.persistence.jpa.repository.CategoryRepository;
+import com.food.app.persistence.jpa.entity.campaign.entity.Campaign;
+import com.food.app.persistence.jpa.entity.campaign.repository.CampaignRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

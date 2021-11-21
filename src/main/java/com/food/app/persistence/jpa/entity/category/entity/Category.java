@@ -1,5 +1,6 @@
-package com.food.app.persistence.jpa.entity;
+package com.food.app.persistence.jpa.entity.category.entity;
 
+import com.food.app.persistence.jpa.entity.product.entity.Product;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 

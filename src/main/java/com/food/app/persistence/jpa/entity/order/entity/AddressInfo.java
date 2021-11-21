@@ -1,4 +1,4 @@
-package com.food.app.persistence.jpa.entity.order;
+package com.food.app.persistence.jpa.entity.order.entity;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data
 @RequiredArgsConstructor
 @Table(name = "addressinfo")
-public class AdressInfo {
+public class AddressInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,7 @@ public class AdressInfo {
     private String city;
     private String state;
     private String zip;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UserInfo userInfo;
 }

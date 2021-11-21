@@ -1,7 +1,7 @@
 package com.food.app.controller;
 
 import com.food.app.Service.ProductService;
-import com.food.app.persistence.jpa.entity.Product;
+import com.food.app.persistence.jpa.entity.product.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
-package com.food.app.persistence.jpa.repository;
+package com.food.app.persistence.jpa.entity.product.repository;
 
-import com.food.app.persistence.jpa.entity.Product;
+import com.food.app.persistence.jpa.entity.product.entity.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

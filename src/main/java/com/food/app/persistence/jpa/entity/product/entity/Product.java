@@ -1,5 +1,6 @@
-package com.food.app.persistence.jpa.entity;
+package com.food.app.persistence.jpa.entity.product.entity;
 
+import com.food.app.persistence.jpa.entity.category.entity.Category;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -24,8 +25,5 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Category category;
-
-
-
 
 }

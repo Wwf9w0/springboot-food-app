@@ -1,4 +1,4 @@
-package com.food.app.persistence.jpa.entity;
+package com.food.app.persistence.jpa.entity.campaign.entity;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

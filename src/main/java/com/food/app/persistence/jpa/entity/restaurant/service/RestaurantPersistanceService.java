@@ -20,13 +20,8 @@ public class RestaurantPersistanceService {
         return restaurantRespository.findByName(name);
     }
 
-    public Restaurant createRestaurant(Restaurant restaurant){
+    public Restaurant saveRestaurant(Restaurant restaurant){
         log.info("Created Restaurant : {}" , restaurant.toString());
-        return restaurantRespository.save(restaurant);
-    }
-
-    public Restaurant updateRestaurant(Restaurant restaurant){
-        log.info("Updated Restaurant : {}" , restaurant.toString());
         return restaurantRespository.save(restaurant);
     }
 

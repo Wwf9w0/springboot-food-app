@@ -1,4 +1,4 @@
-package com.food.app.persistence.jpa.entity.order;
+package com.food.app.persistence.jpa.entity.order.entity;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -26,4 +26,11 @@ public class Order {
     private Long deliveryTime;
     private String paymentId;
     private String note;
+
+    @ManyToOne( fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private UserInfo userInfo;
+
+    public UserInfo getUserInfo(){
+        return userInfo;
+    }
 }

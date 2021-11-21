@@ -1,4 +1,4 @@
-package com.food.app.persistence.jpa.entity.order;
+package com.food.app.persistence.jpa.entity.order.entity;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

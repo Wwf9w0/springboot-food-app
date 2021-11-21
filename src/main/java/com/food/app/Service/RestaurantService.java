@@ -4,6 +4,7 @@ import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
 import com.food.app.persistence.jpa.entity.restaurant.repository.RestaurantRespository;
 import com.food.app.persistence.jpa.entity.restaurant.service.RestaurantPersistanceService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class RestaurantService {
 
     private final RestaurantPersistanceService restaurantPersistanceService;
@@ -22,7 +24,7 @@ public class RestaurantService {
     }
 
     public Restaurant save(Restaurant restaurant) {
-        return restaurantPersistanceService.createRestaurant(restaurant);
+        return restaurantPersistanceService.saveRestaurant(restaurant);
     }
 
     public Optional<Restaurant> getByRestaurantName(String name) {
@@ -36,13 +38,19 @@ public class RestaurantService {
 
     public Restaurant updateRestaurant(Restaurant restaurant) {
 
-        Optional<Restaurant> res = restaurantRespository.findById(restaurant.getId());
+        Optional<Restaurant> optRes = restaurantRespository.findById(restaurant.getId());
+        Restaurant res = optRes.get();
 
-        if (!Objects.nonNull(res)) {
-            return null;
+        if (optRes.isPresent()) {
+            res.setAddress(optRes.get().getAddress());
+            res.setCity(optRes.get().getCity());
+            res.setName(optRes.get().getName());
+            restaurantPersistanceService.saveRestaurant(res);
+            log.info("Restaurant Updated id : {}", res.getId());
+
         }
 
-        return restaurantPersistanceService.updateRestaurant(restaurant);
+        return restaurantPersistanceService.saveRestaurant(restaurant);
     }
 
     public void deleteRestaurant(Long id) {

@@ -1,9 +1,10 @@
 package com.food.app.Service;
 
-import com.food.app.persistence.jpa.entity.Product;
-import com.food.app.persistence.jpa.repository.ProductRepository;
-import com.food.app.persistence.jpa.service.ProductPersistenceService;
+import com.food.app.persistence.jpa.entity.product.entity.Product;
+import com.food.app.persistence.jpa.entity.product.repository.ProductRepository;
+import com.food.app.persistence.jpa.entity.product.service.ProductPersistenceService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,45 +13,55 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ProductService {
 
     private final ProductPersistenceService productPersistenceService;
     private final ProductRepository productRepository;
 
 
-    public Product save(Product product){
-        if(Objects.nonNull(product.getId())){
-            productPersistenceService.addProduct(product);
+    public Product save(Product product) {
+        if (Objects.nonNull(product.getId())) {
+            productPersistenceService.save(product);
         }
 
         return product;
     }
 
 
-    public void deleteProduct(Long id){
+    public void deleteProduct(Long id) {
         Optional<Product> product = productRepository.findById(id);
-        if (Objects.nonNull(product.get().getId())){
+        if (Objects.nonNull(product.get().getId())) {
             productPersistenceService.deleteProduct(product.get().getId());
         }
     }
 
-    public Optional<Product> updateProduct(Product product){
-        Optional<Product> p = productRepository.findById(product.getId());
-        if (Objects.nonNull(p)){
-            productPersistenceService.updateProduct(product);
+    public Product updateProduct(Product product) {
+        Optional<Product> productOptional = productRepository.findById(product.getId());
+        Product pr = productOptional.get();
+        if (productOptional.isPresent()) {
+            pr.setCategory(productOptional.get().getCategory());
+            pr.setProductName(productOptional.get().getProductName());
+            pr.setDescription(productOptional.get().getDescription());
+            pr.setPrice(productOptional.get().getPrice());
+            pr.setId(productOptional.get().getId());
+            pr.setTitle(productOptional.get().getTitle());
+            productPersistenceService.save(pr);
+            log.info("Product Updated id  {}", pr.getId());
+
         }
-        return p;
+        return productPersistenceService.save(product);
     }
 
-    public List<Product> getAllProduct(){
+    public List<Product> getAllProduct() {
         return productPersistenceService.getAllProduct();
 
     }
 
-    public Optional<Product> getProductById(Long id){
+    public Optional<Product> getProductById(Long id) {
         Optional<Product> product = productPersistenceService.getProductById(id);
 
-        if (!Objects.nonNull(product)){
+        if (!Objects.nonNull(product)) {
             return null;
         }
         return product;

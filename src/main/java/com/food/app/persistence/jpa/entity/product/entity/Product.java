@@ -1,12 +1,11 @@
 package com.food.app.persistence.jpa.entity.product.entity;
 
-import com.food.app.persistence.jpa.entity.category.entity.Category;
+import com.food.app.persistence.jpa.entity.order.entity.Order;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Set;
 
 @Entity
 @Data
@@ -23,5 +22,10 @@ public class Product {
     private BigDecimal price;
     private String description;
     private String saleInformation;
+
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
 }

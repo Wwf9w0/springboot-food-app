@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/v1/api")
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
@@ -23,7 +23,7 @@ public class RestaurantController {
         return ResponseEntity.ok(restaurantList);
     }
 
-    @PostMapping(value = "/restaurant")
+    @PostMapping(value = "/create/restaurant")
     @ApiOperation(value = "Create Restaurant")
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant){
       Restaurant res = restaurantService.save(restaurant);

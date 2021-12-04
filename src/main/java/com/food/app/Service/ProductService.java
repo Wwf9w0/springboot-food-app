@@ -21,10 +21,9 @@ public class ProductService {
 
 
     public Product save(Product product) {
-        if (Objects.nonNull(product.getId())) {
+        if (Objects.nonNull(product.getProductName())) {
             productPersistenceService.save(product);
         }
-
         return product;
     }
 
@@ -44,7 +43,6 @@ public class ProductService {
             pr.setDescription(productOptional.get().getDescription());
             pr.setPrice(productOptional.get().getPrice());
             pr.setId(productOptional.get().getId());
-            pr.setTitle(productOptional.get().getTitle());
             productPersistenceService.save(pr);
             log.info("Product Updated id  {}", pr.getId());
 

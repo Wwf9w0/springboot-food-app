@@ -17,7 +17,6 @@ public class ProductConverter {
                 .productName(product.getProductName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-                .saleInformation(product.getSaleInformation())
                 .build();
     }
 

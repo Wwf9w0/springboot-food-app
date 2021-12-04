@@ -16,13 +16,9 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String productName;
-    private String title;
     private BigDecimal price;
     private String description;
-    private String saleInformation;
-
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id", nullable = false)

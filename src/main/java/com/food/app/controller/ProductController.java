@@ -27,7 +27,7 @@ public class ProductController {
 
     @PostMapping("/product")
     @ApiOperation(value = "Create Product")
-    public ResponseEntity<Object> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Object> save(@RequestBody Product product) {
         Product pr = productService.save(product);
         return ResponseEntity.ok(pr);
     }

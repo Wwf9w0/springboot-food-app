@@ -1,5 +1,6 @@
 package com.food.app.persistence.jpa.entity.order.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.food.app.persistence.jpa.entity.product.entity.Product;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -18,24 +19,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String restaurantId;
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    private List<ItemQuantity> items;
     private BigDecimal totalPrice;
-    private Long orderTime;
-    private String speialNote;
-    private Long deliveryTime;
-    private String paymentId;
     private String note;
-
-    @ManyToOne( fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private UserInfo userInfo;
-
+   /* @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<ItemQuantity> items;*/
+   /* @ManyToOne( fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private UserInfo userInfo;*/
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Product> products;
+    @JsonBackReference
+    private List<Product> products;
 
+/*
     public UserInfo getUserInfo(){
         return userInfo;
     }
+*/
 }

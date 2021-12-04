@@ -11,8 +11,6 @@ public class ProductDto {
 
     private Long id;
     private String productName;
-    private String title;
     private BigDecimal price;
     private String description;
-    private String saleInformation;
 }

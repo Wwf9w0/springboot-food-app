@@ -18,14 +18,14 @@ public class RestaurantController {
 
     @GetMapping(value = "/restaurants")
     @ApiOperation(value = "List Restaurant")
-    public ResponseEntity<Object> getAllRestaurant(){
+    public ResponseEntity<List<Restaurant>> getAllRestaurant(){
         List<Restaurant> restaurantList = restaurantService.getAllRestaurant();
         return ResponseEntity.ok(restaurantList);
     }
 
     @PostMapping(value = "/restaurant")
     @ApiOperation(value = "Create Restaurant")
-    public ResponseEntity<Object> createRestaurant(@RequestBody Restaurant restaurant){
+    public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant){
       Restaurant res = restaurantService.save(restaurant);
       return ResponseEntity.ok(res);
     }

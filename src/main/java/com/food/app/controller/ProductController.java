@@ -20,21 +20,21 @@ public class ProductController {
 
     @GetMapping(value = "/products")
     @ApiOperation(value = "List Products")
-    public ResponseEntity<Object> allProducts() {
+    public ResponseEntity<List<Product>> allProducts() {
         List<Product> p = productService.getAllProduct();
         return ResponseEntity.ok(p);
     }
 
     @PostMapping("/product")
     @ApiOperation(value = "Create Product")
-    public ResponseEntity<Object> save(@RequestBody Product product) {
+    public ResponseEntity<Product> save(@RequestBody Product product) {
         Product pr = productService.save(product);
         return ResponseEntity.ok(pr);
     }
 
     @DeleteMapping("/product/{id}")
     @ApiOperation(value = "Delete Product")
-    public ResponseEntity<Object> deleteProduct(@PathVariable("id") Long id) {
+    public ResponseEntity<Product> deleteProduct(@PathVariable("id") Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }

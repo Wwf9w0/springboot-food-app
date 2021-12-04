@@ -36,7 +36,7 @@ public class ProductService {
     }
 
     public Product updateProduct(Product product) {
-        Optional<Product> productOptional = productRepository.findById(product.getId());
+        Optional<Product> productOptional = productPersistenceService.getProductById(product.getId());
         Product pr = productOptional.get();
         if (productOptional.isPresent()) {
             pr.setProductName(productOptional.get().getProductName());

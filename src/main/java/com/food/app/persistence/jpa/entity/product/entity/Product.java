@@ -1,5 +1,6 @@
 package com.food.app.persistence.jpa.entity.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.food.app.persistence.jpa.entity.order.entity.Order;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class Product {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id", nullable = false)
+    @JsonBackReference
     private Order order;
 
 }

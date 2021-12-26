@@ -35,17 +35,17 @@ public class ProductService {
         }
     }
 
-    public Product updateProduct(Product product) {
-        Optional<Product> productOptional = productPersistenceService.getProductById(product.getId());
-        Product pr = productOptional.get();
-        if (productOptional.isPresent()) {
-            pr.setProductName(productOptional.get().getProductName());
-            pr.setDescription(productOptional.get().getDescription());
-            pr.setPrice(productOptional.get().getPrice());
-            pr.setId(productOptional.get().getId());
-            productPersistenceService.save(pr);
-            log.info("Product Updated id  {}", pr.getId());
+    public Product updateProduct(Product product){
+        Optional<Product> optionalProduct = productPersistenceService.getProductById(product.getId());
+        Product p = optionalProduct.get();
 
+        if (optionalProduct.isPresent()){
+            p.setId(optionalProduct.get().getId());
+            p.setProductName(optionalProduct.get().getProductName());
+            p.setDescription(optionalProduct.get().getDescription());
+            p.setPrice(optionalProduct.get().getPrice());
+            p.setOrder(optionalProduct.get().getOrder());
+            productPersistenceService.save(p);
         }
         return productPersistenceService.save(product);
     }

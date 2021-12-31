@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,6 +29,13 @@ public class RestaurantController {
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant){
       Restaurant res = restaurantService.save(restaurant);
       return ResponseEntity.ok(res);
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation("Get Issue By Id")
+    public ResponseEntity<Restaurant> getByRestaurant(@PathVariable String name){
+        Optional<Restaurant> restaurant = restaurantService.getByRestaurantName(name);
+        return ResponseEntity.ok(restaurant.get());
     }
 
 }

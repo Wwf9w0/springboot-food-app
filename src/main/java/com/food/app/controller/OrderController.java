@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,5 +37,12 @@ public class OrderController {
         orderService.deleteOrderById(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/order/{id}")
+    public ResponseEntity<Order> getOrderById(@PathVariable("id") Long id){
+        Optional<Order> optionalOrder = orderService.getOrderById(id);
+        return ResponseEntity.ok(optionalOrder.get());
+    }
+
 
 }

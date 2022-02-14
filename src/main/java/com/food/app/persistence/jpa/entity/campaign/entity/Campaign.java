@@ -15,4 +15,8 @@ public class Campaign {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String campaignName;
+    private String description;
+    private String campaignStartDate;
+    private String campaignEndDate;
 }

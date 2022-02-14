@@ -26,4 +26,7 @@ public class CampaignPersistenceService {
         campaignRepository.deleteById(id);
     }
 
+    public Campaign createCampaign(Campaign campaign){
+        return campaignRepository.save(campaign);
+    }
 }

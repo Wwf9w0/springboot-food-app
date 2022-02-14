@@ -46,7 +46,7 @@ public class MenuItemService {
 
         Optional<MenuItem> menuItemOptional = menuItemrepository.findById(menuItem.getId());
         MenuItem item = menuItemOptional.get();
-        if (menuItemOptional.isPresent()){
+        if (menuItemOptional.isPresent()) {
             item.setId(menuItemOptional.get().getId());
             item.setDescription(menuItemOptional.get().getDescription());
             item.setName(menuItemOptional.get().getName());

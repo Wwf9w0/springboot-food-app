@@ -54,7 +54,7 @@ public class OrderService {
 
     }
 
-    public void deleteOrderById(Long id){
+    public void deleteOrderById(Long id) {
         orderPersistenceService.deleteOrderById(id);
 
     }

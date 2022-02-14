@@ -35,11 +35,11 @@ public class ProductService {
         }
     }
 
-    public Product updateProduct(Product product){
+    public Product updateProduct(Product product) {
         Optional<Product> optionalProduct = productPersistenceService.getProductById(product.getId());
         Product p = optionalProduct.get();
 
-        if (optionalProduct.isPresent()){
+        if (optionalProduct.isPresent()) {
             p.setId(optionalProduct.get().getId());
             p.setProductName(optionalProduct.get().getProductName());
             p.setDescription(optionalProduct.get().getDescription());

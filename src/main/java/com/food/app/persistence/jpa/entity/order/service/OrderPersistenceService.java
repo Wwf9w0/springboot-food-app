@@ -34,4 +34,8 @@ public class OrderPersistenceService {
         log.info("Delete order id: {}", id);
         orderRepository.deleteById(id);
     }
+
+    public String name(String name){
+        return name;
+    }
 }

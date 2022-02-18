@@ -2,6 +2,7 @@ package com.food.app.controller;
 
 import com.food.app.Service.RestaurantService;
 import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
+import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class RestaurantController {
 
     @PostMapping(value = "/create/restaurant")
     @ApiOperation(value = "Create Restaurant")
-    public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant){
+    public ResponseEntity<Restaurant> createRestaurant(@RequestBody RestaurantRequest restaurant){
       Restaurant res = restaurantService.save(restaurant);
       return ResponseEntity.ok(res);
     }

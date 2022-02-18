@@ -37,6 +37,4 @@ public class RestaurantPersistanceService {
     public List<Restaurant> getAllRestaurant(){
         return (List<Restaurant>) restaurantRespository.findAll();
     }
-
-
 }

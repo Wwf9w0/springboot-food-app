@@ -2,6 +2,7 @@ package com.food.app.persistence.jpa.converter;
 
 import com.food.app.persistence.jpa.dto.RestaurantDto;
 import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
+import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,15 @@ public class RestaurantConverter {
                 .name(restaurant.getName())
                 .address(restaurant.getAddress())
                 .city(restaurant.getCity())
+                .build();
+    }
+
+    public Restaurant toEntity(RestaurantRequest request){
+        return Restaurant.builder()
+                .id(request.getId())
+                .name(request.getName())
+                .address(request.getAddress())
+                .city(request.getCity())
                 .build();
     }
 }

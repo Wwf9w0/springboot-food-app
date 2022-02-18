@@ -1,6 +1,7 @@
 package com.food.app.Service;
 
 import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
+import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
 import com.food.app.persistence.jpa.entity.restaurant.repository.RestaurantRespository;
 import com.food.app.persistence.jpa.entity.restaurant.service.RestaurantPersistanceService;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +24,8 @@ public class RestaurantService {
         return restaurantPersistanceService.getAllRestaurant();
     }
 
-    public Restaurant save(Restaurant restaurant) {
-        return restaurantPersistanceService.saveRestaurant(restaurant);
+    public Restaurant save(RestaurantRequest request) {
+        return restaurantPersistanceService.saveRestaurant(request);
     }
 
     public Optional<Restaurant> getByRestaurantName(String name) {
@@ -36,21 +37,17 @@ public class RestaurantService {
         return restaurantPersistanceService.getByRestaurantName(name);
     }
 
-    public Restaurant updateRestaurant(Restaurant restaurant) {
+    public Restaurant updateRestaurant(RestaurantRequest resquest) {
 
-        Optional<Restaurant> optRes = restaurantRespository.findById(restaurant.getId());
-        Restaurant res = optRes.get();
+        Optional<Restaurant> optRes = restaurantRespository.findById(resquest.getId());
 
         if (optRes.isPresent()) {
-            res.setAddress(optRes.get().getAddress());
-            res.setCity(optRes.get().getCity());
-            res.setName(optRes.get().getName());
-            restaurantPersistanceService.saveRestaurant(res);
-            log.info("Restaurant Updated id : {}", res.getId());
+            restaurantPersistanceService.saveRestaurant(resquest);
+            log.info("Restaurant Updated id : {}", resquest.getId());
 
         }
 
-        return restaurantPersistanceService.saveRestaurant(restaurant);
+        return restaurantPersistanceService.saveRestaurant(resquest);
     }
 
     public void deleteRestaurant(Long id) {

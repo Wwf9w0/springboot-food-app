@@ -4,15 +4,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Entity
 @Data
-@RequiredArgsConstructor
-@Table(name = "restaurant")
 @Builder
-public class Restaurant {
-
+@RequiredArgsConstructor
+public class RestaurantRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,5 +19,4 @@ public class Restaurant {
     private String name;
     private String address;
     private String city;
-
 }

@@ -1,6 +1,8 @@
 package com.food.app.persistence.jpa.entity.restaurant.service;
 
+import com.food.app.persistence.jpa.converter.RestaurantConverter;
 import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
+import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
 import com.food.app.persistence.jpa.entity.restaurant.repository.RestaurantRespository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +17,15 @@ import java.util.Optional;
 public class RestaurantPersistanceService {
 
     private final RestaurantRespository restaurantRespository;
+    private final RestaurantConverter restaurantConverter;
 
     public Optional<Restaurant> getByRestaurantName(String name) {
         return restaurantRespository.findByName(name);
     }
 
-    public Restaurant saveRestaurant(Restaurant restaurant){
-        log.info("Created Restaurant : {}" , restaurant.toString());
+    public Restaurant saveRestaurant(RestaurantRequest request){
+        log.info("Created Restaurant : {}" , request.toString());
+        Restaurant restaurant = restaurantConverter.toEntity(request);
         return restaurantRespository.save(restaurant);
     }
 

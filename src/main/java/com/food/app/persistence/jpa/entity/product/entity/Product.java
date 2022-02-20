@@ -22,7 +22,6 @@ public class Product {
     private String productName;
     private BigDecimal price;
     private String description;
-    private String totalProduct;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JsonBackReference

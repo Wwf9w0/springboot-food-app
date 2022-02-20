@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,11 @@ public class ProductPersistenceService {
     public void deleteProduct(Long id){
         productRepository.deleteById(id);
         log.info("Product deleted id: {}" , id);
+    }
+
+    public Long totalProduct(){
+        List<Product> productList = (List<Product>) productRepository.findAll();
+        return productList.stream().count();
     }
 
 

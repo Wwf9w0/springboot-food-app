@@ -1,6 +1,7 @@
 package com.food.app.controller;
 
 import com.food.app.Service.RestaurantService;
+import com.food.app.persistence.jpa.dto.RestaurantDto;
 import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
 import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
 import io.swagger.annotations.ApiOperation;

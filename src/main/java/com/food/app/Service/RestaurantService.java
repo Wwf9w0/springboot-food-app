@@ -1,5 +1,6 @@
 package com.food.app.Service;
 
+import com.food.app.persistence.jpa.dto.RestaurantDto;
 import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
 import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
 import com.food.app.persistence.jpa.entity.restaurant.repository.RestaurantRespository;

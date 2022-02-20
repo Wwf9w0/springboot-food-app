@@ -3,6 +3,7 @@ package com.food.app.persistence.jpa.entity.product.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.food.app.persistence.jpa.entity.category.entity.Category;
 import com.food.app.persistence.jpa.entity.order.entity.Order;
+import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -29,4 +30,6 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Category category;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Restaurant restaurant;
 }

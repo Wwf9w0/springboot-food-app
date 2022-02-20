@@ -27,7 +27,7 @@ public class SwaggerConfiguration {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Food REST API")
-                .contact(new Contact("Emre Karadag", "https://github.com/frixie0", "mrekaradag@gmail.com"))
+                .contact(new Contact("Emre Karadag", "https://github.com/Wwf9w0", "mrekaradag@gmail.com"))
                 .license("MIT")
                 .licenseUrl("https://opensource.org/licenses/MIT")
                 .version("0.0.1")

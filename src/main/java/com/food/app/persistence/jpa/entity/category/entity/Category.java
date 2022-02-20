@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
 
 @Data
 @RequiredArgsConstructor
@@ -17,4 +20,7 @@ public class Category {
     private Long id;
 
     private String categoryName;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private Collection<Product> products = new ArrayList<>();
 }

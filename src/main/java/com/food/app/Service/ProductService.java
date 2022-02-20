@@ -64,4 +64,7 @@ public class ProductService {
         return product;
     }
 
+    public Long toProductCount(){
+        return productPersistenceService.totalProduct();
+    }
 }

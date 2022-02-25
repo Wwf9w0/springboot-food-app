@@ -62,5 +62,4 @@ public class MenuItemService {
 
         return menuItemPersistenceService.save(menuItem);
     }
-
 }

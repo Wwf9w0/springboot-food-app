@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class RestaurantConverter {
 
-    public RestaurantDto toDto(Restaurant restaurant){
+    public RestaurantDto toRestaurantDto(Restaurant restaurant){
         return RestaurantDto.builder()
                 .id(restaurant.getId())
                 .name(restaurant.getName())
@@ -19,7 +19,7 @@ public class RestaurantConverter {
                 .build();
     }
 
-    public Restaurant toEntity(RestaurantRequest request){
+    public Restaurant toRestaurantEntity(RestaurantRequest request){
         return Restaurant.builder()
                 .id(request.getId())
                 .name(request.getName())

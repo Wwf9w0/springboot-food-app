@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class ProductConverter {
-    public ProductDto toDto (Product product){
+    public ProductDto toProductDto (Product product){
         return ProductDto.builder()
                 .id(product.getId())
                 .productName(product.getProductName())

@@ -1,5 +1,7 @@
 package com.food.app.Service;
 
+import com.food.app.persistence.jpa.converter.MenuItemConverter;
+import com.food.app.persistence.jpa.dto.MenuItemDto;
 import com.food.app.persistence.jpa.entity.restaurant.entity.MenuItem;
 import com.food.app.persistence.jpa.entity.restaurant.repository.MenuItemrepository;
 import com.food.app.persistence.jpa.entity.restaurant.service.MenuItemPersistenceService;
@@ -18,18 +20,20 @@ public class MenuItemService {
 
     private final MenuItemPersistenceService menuItemPersistenceService;
     private final MenuItemrepository menuItemrepository;
+    private final MenuItemConverter converter;
 
-    public List<MenuItem> getAllMenuItem() {
-        return menuItemPersistenceService.getAllMenuItem();
+    public List<MenuItemDto> getAllMenuItem() {
+        List<MenuItem> menuItem = menuItemPersistenceService.getAllMenuItem();
+        return converter.toMenuItemDtoList(menuItem);
     }
 
-    public Optional<MenuItem> getByIdMenuItem(Long id) {
+    public Optional<MenuItemDto> getByIdMenuItem(Long id) {
 
         Optional<MenuItem> menuItem = menuItemrepository.findById(id);
         if (!Objects.nonNull(menuItem)) {
             return null;
         }
-        return menuItem;
+        return Optional.ofNullable(converter.toDto(menuItem));
     }
 
 

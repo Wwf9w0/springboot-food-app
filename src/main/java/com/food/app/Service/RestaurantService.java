@@ -21,7 +21,7 @@ public class RestaurantService {
     private final RestaurantPersistanceService restaurantPersistanceService;
     private final RestaurantRespository restaurantRespository;
 
-    public List<Restaurant> getAllRestaurant() {
+    public List<RestaurantDto> getAllRestaurant() {
         return restaurantPersistanceService.getAllRestaurant();
     }
 

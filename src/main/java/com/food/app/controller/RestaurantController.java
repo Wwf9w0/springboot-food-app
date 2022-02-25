@@ -21,8 +21,8 @@ public class RestaurantController {
 
     @GetMapping(value = "/restaurants")
     @ApiOperation(value = "List Restaurant")
-    public ResponseEntity<List<Restaurant>> getAllRestaurant(){
-        List<Restaurant> restaurantList = restaurantService.getAllRestaurant();
+    public ResponseEntity<List<RestaurantDto>> getAllRestaurant(){
+        List<RestaurantDto> restaurantList = restaurantService.getAllRestaurant();
         return ResponseEntity.ok(restaurantList);
     }
 

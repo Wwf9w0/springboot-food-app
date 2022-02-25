@@ -1,6 +1,7 @@
 package com.food.app.persistence.jpa.entity.restaurant.service;
 
 import com.food.app.persistence.jpa.converter.RestaurantConverter;
+import com.food.app.persistence.jpa.dto.RestaurantDto;
 import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
 import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
 import com.food.app.persistence.jpa.entity.restaurant.repository.RestaurantRespository;
@@ -25,7 +26,7 @@ public class RestaurantPersistanceService {
 
     public Restaurant saveRestaurant(RestaurantRequest request){
         log.info("Created Restaurant : {}" , request.toString());
-        Restaurant restaurant = restaurantConverter.toEntity(request);
+        Restaurant restaurant = restaurantConverter.toRestaurantEntity(request);
         return restaurantRespository.save(restaurant);
     }
 
@@ -34,7 +35,9 @@ public class RestaurantPersistanceService {
         restaurantRespository.deleteById(id);
     }
 
-    public List<Restaurant> getAllRestaurant(){
-        return (List<Restaurant>) restaurantRespository.findAll();
+    public List<RestaurantDto> getAllRestaurant(){
+        List<Restaurant> restaurant = restaurantRespository.findAll();
+        List<RestaurantDto> restaurantDtoList = restaurantConverter.toRestaurantDtoList(restaurant);
+        return restaurantDtoList;
     }
 }

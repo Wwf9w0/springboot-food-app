@@ -40,12 +40,9 @@ public class RestaurantConverter {
                 .build();
     }
 
-    public RestaurantDto toDto(RestaurantRequest request){
+    public RestaurantDto toRestaurantName(String name){
         return RestaurantDto.builder()
-                .id(request.getId())
-                .name(request.getName())
-                .address(request.getAddress())
-                .city(request.getCity())
+                .name(name)
                 .build();
     }
 }

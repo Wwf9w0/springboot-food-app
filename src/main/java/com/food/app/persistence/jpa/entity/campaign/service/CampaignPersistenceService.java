@@ -14,7 +14,7 @@ public class CampaignPersistenceService {
 
     private final CampaignRepository campaignRepository;
 
-    public List<Campaign> getAllCategory(){
+    public List<Campaign> getAllCampaign(){
         return (List<Campaign>) campaignRepository.findAll();
     }
 

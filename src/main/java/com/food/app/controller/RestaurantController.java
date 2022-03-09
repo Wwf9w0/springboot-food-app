@@ -20,7 +20,7 @@ public class RestaurantController {
     private final RestaurantService restaurantService;
 
     @GetMapping(value = "/restaurants")
-    @ApiOperation(value = "List Restaurant")
+    @ApiOperation(value = "List of Restaurants")
     public ResponseEntity<List<RestaurantDto>> getAllRestaurant(){
         return ResponseEntity.ok(restaurantService.getAllRestaurant());
     }

@@ -20,39 +20,16 @@ public class RestaurantService {
     private final RestaurantPersistanceService restaurantPersistanceService;
     private final RestaurantRespository restaurantRespository;
 
-    public List<RestaurantDto> getAllRestaurant() {
-        return restaurantPersistanceService.getAllRestaurant();
+    public RestaurantEntity save(RestaurantEntity restaurant){
+        return restaurantPersistanceService.save(restaurant);
     }
 
-    public RestaurantEntity save(RestaurantRequest request) {
-        return restaurantPersistanceService.saveRestaurant(request);
+    public List<RestaurantDto> getAllRestaurant(){
+        return restaurantPersistanceService.getAllRestaurants();
     }
 
-    public Optional<RestaurantEntity> getByRestaurantName(String name) {
-        Optional<RestaurantEntity> restaurant = restaurantRespository.findByName(name);
-        if (!Objects.nonNull(restaurant)) {
-            return null;
-        }
-
-        return restaurantPersistanceService.getByRestaurantName(name);
+    public RestaurantDto getRestaurantByName(String name){
+        return restaurantPersistanceService.getRestaurantByName(name);
     }
-
-    public RestaurantEntity updateRestaurant(RestaurantRequest resquest) {
-
-        Optional<RestaurantEntity> optRes = restaurantRespository.findById(resquest.getId());
-
-        if (optRes.isPresent()) {
-            restaurantPersistanceService.saveRestaurant(resquest);
-            log.info("Restaurant Updated id : {}", resquest.getId());
-
-        }
-
-        return restaurantPersistanceService.saveRestaurant(resquest);
-    }
-
-    public void deleteRestaurant(Long id) {
-        restaurantPersistanceService.deleteRestaurant(id);
-    }
-
 
 }

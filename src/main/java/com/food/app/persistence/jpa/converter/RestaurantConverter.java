@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RestaurantConverter {
 
-    public static RestaurantDto toRestaurantDto(RestaurantEntity restaurant){
+    public  RestaurantDto toRestaurantDto(RestaurantEntity restaurant){
         return RestaurantDto.builder()
                 .id(restaurant.getId())
                 .name(restaurant.getName())
@@ -29,12 +29,5 @@ public class RestaurantConverter {
                 .city(restaurantEntity.getCity())
                 .address(restaurantEntity.getAddress())
                 .build()).collect(Collectors.toList());
-    }
-
-
-    public RestaurantDto toRestaurantName(String name){
-        return RestaurantDto.builder()
-                .name(name)
-                .build();
     }
 }

@@ -5,6 +5,7 @@ import com.food.app.persistence.jpa.dto.RestaurantDto;
 import com.food.app.persistence.jpa.entity.RestaurantEntity;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,22 +22,19 @@ public class RestaurantController {
     @GetMapping(value = "/restaurants")
     @ApiOperation(value = "List Restaurant")
     public ResponseEntity<List<RestaurantDto>> getAllRestaurant(){
-        List<RestaurantDto> restaurantList = restaurantService.getAllRestaurant();
-        return ResponseEntity.ok(restaurantList);
+        return ResponseEntity.ok(restaurantService.getAllRestaurant());
     }
 
     @PostMapping(value = "/create/restaurant")
     @ApiOperation(value = "Create Restaurant")
-    public ResponseEntity<RestaurantEntity> createRestaurant(@RequestBody RestaurantRequest restaurant){
+    public ResponseEntity<RestaurantEntity> createRestaurant(@RequestBody RestaurantEntity restaurant){
       RestaurantEntity res = restaurantService.save(restaurant);
       return ResponseEntity.ok(res);
     }
 
-    @GetMapping("/{id}")
-    @ApiOperation("Get Issue By Id")
-    public ResponseEntity<RestaurantEntity> getByRestaurant(@PathVariable String name){
-        Optional<RestaurantEntity> restaurant = restaurantService.getByRestaurantName(name);
-        return ResponseEntity.ok(restaurant.get());
+    @GetMapping("/{name}")
+    @ApiOperation("Get Restaurant By Name")
+    public ResponseEntity<RestaurantDto> getByRestaurant(@PathVariable String name){
+        return ResponseEntity.ok(restaurantService.getRestaurantByName(name));
     }
-
 }

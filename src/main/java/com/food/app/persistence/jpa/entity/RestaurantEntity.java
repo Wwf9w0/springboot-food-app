@@ -18,8 +18,13 @@ public class RestaurantEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String name;
+
+    @Column
     private String address;
+
+    @Column
     private String city;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)

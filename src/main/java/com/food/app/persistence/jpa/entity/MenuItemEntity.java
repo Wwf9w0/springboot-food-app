@@ -16,8 +16,15 @@ public class MenuItemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String name;
+
+    @Column
     private String restaurantId;
+
+    @Column
     private String description;
+
+    @Column
     private BigDecimal price;
 }

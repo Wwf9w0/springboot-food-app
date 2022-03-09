@@ -12,11 +12,18 @@ import javax.persistence.*;
 public class CampaignEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String campaignName;
+
+    @Column
     private String description;
+
+    @Column
     private String campaignStartDate;
+
+    @Column
     private String campaignEndDate;
 }

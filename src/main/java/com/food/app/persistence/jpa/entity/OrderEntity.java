@@ -16,7 +16,11 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private BigDecimal totalPrice;
+
+    @Column
     private String note;
    /* @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<ItemQuantity> items;*/

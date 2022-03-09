@@ -14,9 +14,10 @@ import java.util.Collection;
 public class CategoryEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String categoryName;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)

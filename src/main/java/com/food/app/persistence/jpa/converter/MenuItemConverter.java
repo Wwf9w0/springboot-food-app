@@ -13,12 +13,16 @@ import java.util.stream.Collectors;
 public class MenuItemConverter {
 
     public List<MenuItemDto> toMenuItemDtoList(List<MenuItemEntity> menuItem){
-        return menuItem.stream().map(MenuItemConverter::toMenuItemDto)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+        return menuItem.stream().map(menuItemEntity -> MenuItemDto.builder()
+                .id(menuItemEntity.getId())
+                .name(menuItemEntity.getName())
+                .restaurantId(menuItemEntity.getRestaurantId())
+                .description(menuItemEntity.getDescription())
+                .price(menuItemEntity.getPrice())
+                .build()).collect(Collectors.toList());
     }
 
-    public static MenuItemDto toMenuItemDto(MenuItemEntity menuItem){
+    public  MenuItemDto toMenuItemDto(MenuItemEntity menuItem){
         return MenuItemDto.builder()
                 .id(menuItem.getId())
                 .name(menuItem.getName())
@@ -28,7 +32,7 @@ public class MenuItemConverter {
                 .build();
     }
 
-    public MenuItemDto toDto(Optional<MenuItemEntity> menuItem){
+    public MenuItemDto toMenuItemDto(Optional<MenuItemEntity> menuItem){
         return MenuItemDto.builder()
                 .id(menuItem.get().getId())
                 .name(menuItem.get().getName())

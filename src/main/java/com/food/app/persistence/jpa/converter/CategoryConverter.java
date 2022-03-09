@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CategoryConverter {
 
-    public CategoryDto toRestaurantDto(CategoryEntity category){
+    public CategoryDto toCategoryDto(CategoryEntity category){
         return CategoryDto.builder()
                 .id(category.getId())
                 .categoryName(category.getCategoryName())

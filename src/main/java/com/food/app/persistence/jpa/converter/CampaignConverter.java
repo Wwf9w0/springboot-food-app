@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class CampaignConverter {
 
-    public static CampaignDto toCampaignDto(CampaignEntity campaignEntity){
+    public CampaignDto toCampaignDto(CampaignEntity campaignEntity){
         return CampaignDto.builder()
                 .id(campaignEntity.getId())
                 .campaignName(campaignEntity.getCampaignName())
@@ -23,8 +23,12 @@ public class CampaignConverter {
 
 
     public List<CampaignDto> toCampaignDtoList(List<CampaignEntity> campaignEntities){
-        return campaignEntities.stream().map(CampaignConverter::toCampaignDto)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+        return campaignEntities.stream().map( campaignEntity -> CampaignDto.builder()
+                .id(campaignEntity.getId())
+                .campaignName(campaignEntity.getCampaignName())
+                .campaignStartDate(campaignEntity.getCampaignStartDate())
+                .campaignEndDate(campaignEntity.getCampaignEndDate())
+                .description(campaignEntity.getDescription())
+                .build()).collect(Collectors.toList());
     }
 }

@@ -23,19 +23,14 @@ public class RestaurantConverter {
     }
 
     public List<RestaurantDto> toRestaurantDtoList(List<RestaurantEntity> restaurants){
-        return restaurants.stream().map(RestaurantConverter::toRestaurantDto)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+        return restaurants.stream().map(restaurantEntity -> RestaurantDto.builder()
+                .id(restaurantEntity.getId())
+                .name(restaurantEntity.getName())
+                .city(restaurantEntity.getCity())
+                .address(restaurantEntity.getAddress())
+                .build()).collect(Collectors.toList());
     }
 
-    public RestaurantEntity toRestaurantEntity(RestaurantRequest request){
-        return RestaurantEntity.builder()
-                .id(request.getId())
-                .name(request.getName())
-                .address(request.getAddress())
-                .city(request.getCity())
-                .build();
-    }
 
     public RestaurantDto toRestaurantName(String name){
         return RestaurantDto.builder()

@@ -33,7 +33,7 @@ public class MenuItemService {
         if (!Objects.nonNull(menuItem)) {
             return null;
         }
-        return Optional.ofNullable(converter.toDto(menuItem));
+        return Optional.ofNullable(converter.toMenuItemDto(menuItem));
     }
 
 

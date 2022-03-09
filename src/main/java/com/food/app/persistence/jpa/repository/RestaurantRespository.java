@@ -11,6 +11,4 @@ import java.util.Optional;
 public interface RestaurantRespository extends CrudRepository<RestaurantEntity, Long> {
 
     Optional<RestaurantEntity> findByName(String name);
-    List<RestaurantEntity> findAll();
-
 }

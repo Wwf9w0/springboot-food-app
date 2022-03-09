@@ -1,15 +1,15 @@
 package com.food.app.persistence.jpa.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "restaurant")
 @Builder
 public class RestaurantEntity {
@@ -27,6 +27,6 @@ public class RestaurantEntity {
     @Column
     private String city;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    private Set<ProductEntity> products;
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ProductEntity> products;
 }

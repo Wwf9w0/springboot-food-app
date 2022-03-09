@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @RequiredArgsConstructor
@@ -20,6 +21,6 @@ public class CategoryEntity {
     @Column
     private String categoryName;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private Collection<ProductEntity> products = new ArrayList<>();
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ProductEntity> products;
 }

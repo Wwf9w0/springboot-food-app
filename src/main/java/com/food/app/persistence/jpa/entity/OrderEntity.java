@@ -26,7 +26,7 @@ public class OrderEntity {
     private List<ItemQuantity> items;*/
    /* @ManyToOne( fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private UserInfo userInfo;*/
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductEntity> products;
 
 /*

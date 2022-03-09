@@ -1,7 +1,7 @@
 package com.food.app.controller;
 
 import com.food.app.Service.OrderService;
-import com.food.app.persistence.jpa.entity.order.entity.Order;
+import com.food.app.persistence.jpa.entity.OrderEntity;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,28 +19,28 @@ public class OrderController {
 
     @PostMapping("/create/order")
     @ApiOperation("Create Order")
-    public ResponseEntity<Order> save(@RequestBody Order order){
-        Order o = orderService.save(order);
+    public ResponseEntity<OrderEntity> save(@RequestBody OrderEntity order){
+        OrderEntity o = orderService.save(order);
         return ResponseEntity.ok(o);
     }
 
     @GetMapping("/orders")
     @ApiOperation("List of Orders")
-    public ResponseEntity<List<Order>> getOrders(){
-        List<Order> orderList = orderService.getOrders();
+    public ResponseEntity<List<OrderEntity>> getOrders(){
+        List<OrderEntity> orderList = orderService.getOrders();
         return ResponseEntity.ok(orderList);
     }
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation("Delete Order")
-    public ResponseEntity<Order> deleteOrder(@PathVariable("id") Long id){
+    public ResponseEntity<OrderEntity> deleteOrder(@PathVariable("id") Long id){
         orderService.deleteOrderById(id);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/order/{id}")
-    public ResponseEntity<Order> getOrderById(@PathVariable("id") Long id){
-        Optional<Order> optionalOrder = orderService.getOrderById(id);
+    public ResponseEntity<OrderEntity> getOrderById(@PathVariable("id") Long id){
+        Optional<OrderEntity> optionalOrder = orderService.getOrderById(id);
         return ResponseEntity.ok(optionalOrder.get());
     }
 

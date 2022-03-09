@@ -1,9 +1,6 @@
-package com.food.app.persistence.jpa.entity.product.entity;
+package com.food.app.persistence.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.food.app.persistence.jpa.entity.category.entity.Category;
-import com.food.app.persistence.jpa.entity.order.entity.Order;
-import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -14,7 +11,7 @@ import java.math.BigDecimal;
 @Data
 @Table(name = "product")
 @RequiredArgsConstructor
-public class Product {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,11 +22,11 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JsonBackReference
-    private Order order;
+    private OrderEntity order;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Category category;
+    private CategoryEntity category;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Restaurant restaurant;
+    private RestaurantEntity restaurant;
 }

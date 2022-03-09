@@ -1,4 +1,4 @@
-package com.food.app.persistence.jpa.entity.restaurant.entity;
+package com.food.app.persistence.jpa.entity;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Data
 @Table(name = "menu")
 @RequiredArgsConstructor
-public class MenuItem {
+public class MenuItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

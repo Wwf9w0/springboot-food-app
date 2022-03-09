@@ -1,10 +1,7 @@
 package com.food.app.persistence.jpa.converter;
 
-import com.food.app.persistence.jpa.dto.MenuItemDto;
 import com.food.app.persistence.jpa.dto.RestaurantDto;
-import com.food.app.persistence.jpa.entity.restaurant.entity.MenuItem;
-import com.food.app.persistence.jpa.entity.restaurant.entity.Restaurant;
-import com.food.app.persistence.jpa.entity.restaurant.entity.RestaurantRequest;
+import com.food.app.persistence.jpa.entity.RestaurantEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +13,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RestaurantConverter {
 
-    public static RestaurantDto toRestaurantDto(Restaurant restaurant){
+    public static RestaurantDto toRestaurantDto(RestaurantEntity restaurant){
         return RestaurantDto.builder()
                 .id(restaurant.getId())
                 .name(restaurant.getName())
@@ -25,14 +22,14 @@ public class RestaurantConverter {
                 .build();
     }
 
-    public List<RestaurantDto> toRestaurantDtoList(List<Restaurant> restaurants){
+    public List<RestaurantDto> toRestaurantDtoList(List<RestaurantEntity> restaurants){
         return restaurants.stream().map(RestaurantConverter::toRestaurantDto)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    public Restaurant toRestaurantEntity(RestaurantRequest request){
-        return Restaurant.builder()
+    public RestaurantEntity toRestaurantEntity(RestaurantRequest request){
+        return RestaurantEntity.builder()
                 .id(request.getId())
                 .name(request.getName())
                 .address(request.getAddress())

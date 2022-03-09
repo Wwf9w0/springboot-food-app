@@ -2,9 +2,9 @@ package com.food.app.Service;
 
 import com.food.app.persistence.jpa.converter.MenuItemConverter;
 import com.food.app.persistence.jpa.dto.MenuItemDto;
-import com.food.app.persistence.jpa.entity.restaurant.entity.MenuItem;
-import com.food.app.persistence.jpa.entity.restaurant.repository.MenuItemrepository;
-import com.food.app.persistence.jpa.entity.restaurant.service.MenuItemPersistenceService;
+import com.food.app.persistence.jpa.entity.MenuItemEntity;
+import com.food.app.persistence.jpa.repository.MenuItemrepository;
+import com.food.app.persistence.jpa.service.MenuItemPersistenceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,13 +23,13 @@ public class MenuItemService {
     private final MenuItemConverter converter;
 
     public List<MenuItemDto> getAllMenuItem() {
-        List<MenuItem> menuItem = menuItemPersistenceService.getAllMenuItem();
+        List<MenuItemEntity> menuItem = menuItemPersistenceService.getAllMenuItem();
         return converter.toMenuItemDtoList(menuItem);
     }
 
     public Optional<MenuItemDto> getByIdMenuItem(Long id) {
 
-        Optional<MenuItem> menuItem = menuItemrepository.findById(id);
+        Optional<MenuItemEntity> menuItem = menuItemrepository.findById(id);
         if (!Objects.nonNull(menuItem)) {
             return null;
         }
@@ -37,8 +37,8 @@ public class MenuItemService {
     }
 
 
-    public MenuItem createMenuItem(MenuItem menuItem) {
-        Optional<MenuItem> m = menuItemrepository.findById(menuItem.getId());
+    public MenuItemEntity createMenuItem(MenuItemEntity menuItem) {
+        Optional<MenuItemEntity> m = menuItemrepository.findById(menuItem.getId());
 
         if (m.isPresent()) {
             updateMenuItem(menuItem);
@@ -46,10 +46,10 @@ public class MenuItemService {
         return menuItemPersistenceService.save(menuItem);
     }
 
-    public MenuItem updateMenuItem(MenuItem menuItem) {
+    public MenuItemEntity updateMenuItem(MenuItemEntity menuItem) {
 
-        Optional<MenuItem> menuItemOptional = menuItemrepository.findById(menuItem.getId());
-        MenuItem item = menuItemOptional.get();
+        Optional<MenuItemEntity> menuItemOptional = menuItemrepository.findById(menuItem.getId());
+        MenuItemEntity item = menuItemOptional.get();
         if (menuItemOptional.isPresent()) {
             item.setId(menuItemOptional.get().getId());
             item.setDescription(menuItemOptional.get().getDescription());

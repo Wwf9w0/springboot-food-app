@@ -1,7 +1,7 @@
 package com.food.app.persistence.jpa.converter;
 
 import com.food.app.persistence.jpa.dto.CategoryDto;
-import com.food.app.persistence.jpa.entity.category.entity.Category;
+import com.food.app.persistence.jpa.entity.CategoryEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CategoryConverter {
 
-    public CategoryDto toRestaurantDto(Category category){
+    public CategoryDto toRestaurantDto(CategoryEntity category){
         return CategoryDto.builder()
                 .id(category.getId())
                 .categoryName(category.getCategoryName())

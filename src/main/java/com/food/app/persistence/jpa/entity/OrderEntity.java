@@ -1,20 +1,17 @@
-package com.food.app.persistence.jpa.entity.order.entity;
+package com.food.app.persistence.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.food.app.persistence.jpa.entity.product.entity.Product;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
 @RequiredArgsConstructor
 @Table(name = "order")
-public class Order {
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +23,7 @@ public class Order {
    /* @ManyToOne( fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private UserInfo userInfo;*/
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<Product> products;
+    private List<ProductEntity> products;
 
 /*
     public UserInfo getUserInfo(){

@@ -1,6 +1,5 @@
-package com.food.app.persistence.jpa.entity.restaurant.entity;
+package com.food.app.persistence.jpa.entity;
 
-import com.food.app.persistence.jpa.entity.product.entity.Product;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Table(name = "restaurant")
 @Builder
-public class Restaurant {
+public class RestaurantEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,5 +23,5 @@ public class Restaurant {
     private String city;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    private Set<Product> products;
+    private Set<ProductEntity> products;
 }

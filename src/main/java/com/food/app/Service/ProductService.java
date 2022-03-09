@@ -1,8 +1,8 @@
 package com.food.app.Service;
 
-import com.food.app.persistence.jpa.entity.product.entity.Product;
-import com.food.app.persistence.jpa.entity.product.repository.ProductRepository;
-import com.food.app.persistence.jpa.entity.product.service.ProductPersistenceService;
+import com.food.app.persistence.jpa.entity.ProductEntity;
+import com.food.app.persistence.jpa.repository.ProductRepository;
+import com.food.app.persistence.jpa.service.ProductPersistenceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class ProductService {
     private final ProductRepository productRepository;
 
 
-    public Product save(Product product) {
+    public ProductEntity save(ProductEntity product) {
         if (Objects.nonNull(product.getProductName())) {
             productPersistenceService.save(product);
         }
@@ -29,15 +29,15 @@ public class ProductService {
 
 
     public void deleteProduct(Long id) {
-        Optional<Product> product = productRepository.findById(id);
+        Optional<ProductEntity> product = productRepository.findById(id);
         if (Objects.nonNull(product.get().getId())) {
             productPersistenceService.deleteProduct(product.get().getId());
         }
     }
 
-    public Product updateProduct(Product product) {
-        Optional<Product> optionalProduct = productPersistenceService.getProductById(product.getId());
-        Product p = optionalProduct.get();
+    public ProductEntity updateProduct(ProductEntity product) {
+        Optional<ProductEntity> optionalProduct = productPersistenceService.getProductById(product.getId());
+        ProductEntity p = optionalProduct.get();
 
         if (optionalProduct.isPresent()) {
             p.setId(optionalProduct.get().getId());
@@ -50,13 +50,13 @@ public class ProductService {
         return productPersistenceService.save(product);
     }
 
-    public List<Product> getAllProduct() {
+    public List<ProductEntity> getAllProduct() {
         return productPersistenceService.getAllProduct();
 
     }
 
-    public Optional<Product> getProductById(Long id) {
-        Optional<Product> product = productPersistenceService.getProductById(id);
+    public Optional<ProductEntity> getProductById(Long id) {
+        Optional<ProductEntity> product = productPersistenceService.getProductById(id);
 
         if (!Objects.nonNull(product)) {
             return null;

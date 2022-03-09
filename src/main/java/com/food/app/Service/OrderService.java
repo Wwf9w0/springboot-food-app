@@ -1,7 +1,7 @@
 package com.food.app.Service;
 
-import com.food.app.persistence.jpa.entity.order.entity.Order;
-import com.food.app.persistence.jpa.entity.order.service.OrderPersistenceService;
+import com.food.app.persistence.jpa.entity.OrderEntity;
+import com.food.app.persistence.jpa.service.OrderPersistenceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,19 +17,19 @@ public class OrderService {
     private final OrderPersistenceService orderPersistenceService;
 
 
-    public Order save(Order order) {
+    public OrderEntity save(OrderEntity order) {
         if (Objects.nonNull(order.getTotalPrice())) {
             orderPersistenceService.save(order);
         }
         return order;
     }
 
-    public List<Order> getOrders() {
+    public List<OrderEntity> getOrders() {
         return orderPersistenceService.getOrders();
     }
 
-    public Optional<Order> getOrderById(Long id) {
-        Optional<Order> optionalOrder = orderPersistenceService.getOrderById(id);
+    public Optional<OrderEntity> getOrderById(Long id) {
+        Optional<OrderEntity> optionalOrder = orderPersistenceService.getOrderById(id);
 
         if (!Objects.nonNull(optionalOrder)) {
             return null;
@@ -38,10 +38,10 @@ public class OrderService {
         return optionalOrder;
     }
 
-    public Order updateOrder(Order order) {
+    public OrderEntity updateOrder(OrderEntity order) {
 
-        Optional<Order> optionalOrder = orderPersistenceService.getOrderById(order.getId());
-        Order o = optionalOrder.get();
+        Optional<OrderEntity> optionalOrder = orderPersistenceService.getOrderById(order.getId());
+        OrderEntity o = optionalOrder.get();
 
         if (optionalOrder.isPresent()) {
             o.setId(optionalOrder.get().getId());

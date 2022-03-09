@@ -1,7 +1,7 @@
-package com.food.app.persistence.jpa.entity.category.service;
+package com.food.app.persistence.jpa.service;
 
-import com.food.app.persistence.jpa.entity.category.entity.Category;
-import com.food.app.persistence.jpa.entity.category.repository.CategoryRepository;
+import com.food.app.persistence.jpa.entity.CategoryEntity;
+import com.food.app.persistence.jpa.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,11 @@ public class CategoryPersistenceService {
 
     private final CategoryRepository categoryRepository;
 
-    public List<Category> getAllCategory(){
-        return (List<Category>) categoryRepository.findAll();
+    public List<CategoryEntity> getAllCategory(){
+        return (List<CategoryEntity>) categoryRepository.findAll();
     }
 
-    public Optional<Category> getCategoryById(Long id){
+    public Optional<CategoryEntity> getCategoryById(Long id){
         return categoryRepository.findById(id);
     }
 

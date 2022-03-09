@@ -1,7 +1,7 @@
-package com.food.app.persistence.jpa.entity.campaign.service;
+package com.food.app.persistence.jpa.service;
 
-import com.food.app.persistence.jpa.entity.campaign.entity.Campaign;
-import com.food.app.persistence.jpa.entity.campaign.repository.CampaignRepository;
+import com.food.app.persistence.jpa.entity.CampaignEntity;
+import com.food.app.persistence.jpa.repository.CampaignRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ public class CampaignPersistenceService {
 
     private final CampaignRepository campaignRepository;
 
-    public List<Campaign> getAllCampaign(){
-        return (List<Campaign>) campaignRepository.findAll();
+    public List<CampaignEntity> getAllCampaign(){
+        return (List<CampaignEntity>) campaignRepository.findAll();
     }
 
-    public Optional<Campaign> getCategoryById(Long id){
+    public Optional<CampaignEntity> getCategoryById(Long id){
         return campaignRepository.findById(id);
     }
 
@@ -26,7 +26,7 @@ public class CampaignPersistenceService {
         campaignRepository.deleteById(id);
     }
 
-    public Campaign createCampaign(Campaign campaign){
+    public CampaignEntity createCampaign(CampaignEntity campaign){
         return campaignRepository.save(campaign);
     }
 }

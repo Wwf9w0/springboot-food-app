@@ -1,7 +1,7 @@
 package com.food.app.persistence.jpa.converter;
 
 import com.food.app.persistence.jpa.dto.MenuItemDto;
-import com.food.app.persistence.jpa.entity.restaurant.entity.MenuItem;
+import com.food.app.persistence.jpa.entity.MenuItemEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 @Component
 public class MenuItemConverter {
 
-    public List<MenuItemDto> toMenuItemDtoList(List<MenuItem> menuItem){
+    public List<MenuItemDto> toMenuItemDtoList(List<MenuItemEntity> menuItem){
         return menuItem.stream().map(MenuItemConverter::toMenuItemDto)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    public static MenuItemDto toMenuItemDto(MenuItem menuItem){
+    public static MenuItemDto toMenuItemDto(MenuItemEntity menuItem){
         return MenuItemDto.builder()
                 .id(menuItem.getId())
                 .name(menuItem.getName())
@@ -28,7 +28,7 @@ public class MenuItemConverter {
                 .build();
     }
 
-    public MenuItemDto toDto(Optional<MenuItem> menuItem){
+    public MenuItemDto toDto(Optional<MenuItemEntity> menuItem){
         return MenuItemDto.builder()
                 .id(menuItem.get().getId())
                 .name(menuItem.get().getName())

@@ -1,12 +1,11 @@
-package com.food.app.persistence.jpa.entity.product.service;
+package com.food.app.persistence.jpa.service;
 
-import com.food.app.persistence.jpa.entity.product.entity.Product;
-import com.food.app.persistence.jpa.entity.product.repository.ProductRepository;
+import com.food.app.persistence.jpa.entity.ProductEntity;
+import com.food.app.persistence.jpa.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,15 +16,15 @@ public class ProductPersistenceService {
 
     private final ProductRepository productRepository;
 
-    public List<Product> getAllProduct(){
-        return (List<Product>) productRepository.findAll();
+    public List<ProductEntity> getAllProduct(){
+        return (List<ProductEntity>) productRepository.findAll();
     }
 
-    public Optional<Product> getProductById(Long id){
+    public Optional<ProductEntity> getProductById(Long id){
         return productRepository.findById(id);
     }
 
-    public Product save(Product product){
+    public ProductEntity save(ProductEntity product){
         log.info("Product Added");
         return productRepository.save(product);
     }
@@ -36,7 +35,7 @@ public class ProductPersistenceService {
     }
 
     public Long totalProduct(){
-        List<Product> productList = (List<Product>) productRepository.findAll();
+        List<ProductEntity> productList = (List<ProductEntity>) productRepository.findAll();
         return productList.stream().count();
     }
 

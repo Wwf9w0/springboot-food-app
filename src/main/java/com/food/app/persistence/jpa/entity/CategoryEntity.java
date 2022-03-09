@@ -1,19 +1,17 @@
-package com.food.app.persistence.jpa.entity.category.entity;
+package com.food.app.persistence.jpa.entity;
 
-import com.food.app.persistence.jpa.entity.product.entity.Product;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
 
 @Data
 @RequiredArgsConstructor
 @Entity
 @Table(name = "category")
-public class Category {
+public class CategoryEntity {
 
     @Id
     @GeneratedValue
@@ -22,5 +20,5 @@ public class Category {
     private String categoryName;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private Collection<Product> products = new ArrayList<>();
+    private Collection<ProductEntity> products = new ArrayList<>();
 }

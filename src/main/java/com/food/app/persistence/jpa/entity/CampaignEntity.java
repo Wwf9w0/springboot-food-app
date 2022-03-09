@@ -1,4 +1,4 @@
-package com.food.app.persistence.jpa.entity.campaign.entity;
+package com.food.app.persistence.jpa.entity;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "campaign")
 @RequiredArgsConstructor
-public class Campaign {
+public class CampaignEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

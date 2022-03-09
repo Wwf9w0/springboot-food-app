@@ -1,7 +1,7 @@
 package com.food.app.persistence.jpa.converter;
 
 import com.food.app.persistence.jpa.dto.CampaignDto;
-import com.food.app.persistence.jpa.entity.campaign.entity.Campaign;
+import com.food.app.persistence.jpa.entity.CampaignEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,19 +11,19 @@ import java.util.stream.Collectors;
 @Component
 public class CampaignConverter {
 
-    public static CampaignDto toCampaignDto(Campaign campaign){
+    public static CampaignDto toCampaignDto(CampaignEntity campaignEntity){
         return CampaignDto.builder()
-                .id(campaign.getId())
-                .campaignName(campaign.getCampaignName())
-                .description(campaign.getDescription())
-                .campaignEndDate(campaign.getCampaignEndDate())
-                .campaignStartDate(campaign.getCampaignStartDate())
+                .id(campaignEntity.getId())
+                .campaignName(campaignEntity.getCampaignName())
+                .description(campaignEntity.getDescription())
+                .campaignEndDate(campaignEntity.getCampaignEndDate())
+                .campaignStartDate(campaignEntity.getCampaignStartDate())
                 .build();
     }
 
 
-    public List<CampaignDto> toCampaignDtoList(List<Campaign> campaigns){
-        return campaigns.stream().map(CampaignConverter::toCampaignDto)
+    public List<CampaignDto> toCampaignDtoList(List<CampaignEntity> campaignEntities){
+        return campaignEntities.stream().map(CampaignConverter::toCampaignDto)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }

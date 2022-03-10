@@ -1,5 +1,6 @@
 package com.food.app.persistence.jpa.service;
 
+import com.food.app.advice.exception.ProductNotFoundException;
 import com.food.app.persistence.jpa.converter.ProductConverter;
 import com.food.app.persistence.jpa.dto.ProductDto;
 import com.food.app.persistence.jpa.entity.ProductEntity;
@@ -23,7 +24,7 @@ public class ProductPersistenceService {
     public List<ProductDto> getAllProduct() {
         List<ProductEntity> productEntities =  productRepository.findAll();
         if (Objects.isNull(productEntities)){
-            return new RuntimeException("dasasd");
+            return (List<ProductDto>) new  ProductNotFoundException();
         }
         return productConverter.toProductDtoList(productEntities);
     }

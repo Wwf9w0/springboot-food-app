@@ -1,6 +1,7 @@
 package com.food.app.controller;
 
 import com.food.app.Service.ProductService;
+import com.food.app.persistence.jpa.dto.ProductDto;
 import com.food.app.persistence.jpa.entity.ProductEntity;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,8 @@ public class ProductController {
 
     @GetMapping(value = "/products")
     @ApiOperation(value = "List Products")
-    public ResponseEntity<List<ProductEntity>> allProducts() {
-        List<ProductEntity> p = productService.getAllProduct();
-        return ResponseEntity.ok(p);
+    public ResponseEntity<List<ProductDto>> allProducts() {
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 
     @PostMapping("/create/product")
@@ -32,7 +32,7 @@ public class ProductController {
 
     @DeleteMapping("/product/{id}")
     @ApiOperation(value = "Delete Product")
-    public ResponseEntity<ProductEntity> deleteProduct(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }

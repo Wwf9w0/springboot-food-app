@@ -18,7 +18,7 @@ public class ExceptionAdvice {
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<Error> handleException(ProductNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(consturctError(e.getCode(), e.getMessage()))
+                .body(consturctError(e.getCode(), e.getMessage()));
     }
 
     @ExceptionHandler(RestaurantNotFoundException.class)

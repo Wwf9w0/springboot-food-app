@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,9 @@ public class ProductPersistenceService {
 
     public List<ProductDto> getAllProduct() {
         List<ProductEntity> productEntities =  productRepository.findAll();
+        if (Objects.isNull(productEntities)){
+            return new RuntimeException("dasasd");
+        }
         return productConverter.toProductDtoList(productEntities);
     }
 

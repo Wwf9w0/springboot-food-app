@@ -1,5 +1,6 @@
 package com.food.app.Service;
 
+import com.food.app.persistence.jpa.dto.ProductDto;
 import com.food.app.persistence.jpa.entity.ProductEntity;
 import com.food.app.persistence.jpa.repository.ProductRepository;
 import com.food.app.persistence.jpa.service.ProductPersistenceService;
@@ -35,34 +36,10 @@ public class ProductService {
         }
     }
 
-    public ProductEntity updateProduct(ProductEntity product) {
-        Optional<ProductEntity> optionalProduct = productPersistenceService.getProductById(product.getId());
-        ProductEntity p = optionalProduct.get();
-
-        if (optionalProduct.isPresent()) {
-            p.setId(optionalProduct.get().getId());
-            p.setProductName(optionalProduct.get().getProductName());
-            p.setDescription(optionalProduct.get().getDescription());
-            p.setPrice(optionalProduct.get().getPrice());
-            p.setOrder(optionalProduct.get().getOrder());
-            productPersistenceService.save(p);
-        }
-        return productPersistenceService.save(product);
-    }
-
-    public List<ProductEntity> getAllProduct() {
+    public List<ProductDto> getAllProducts(){
         return productPersistenceService.getAllProduct();
-
     }
 
-    public Optional<ProductEntity> getProductById(Long id) {
-        Optional<ProductEntity> product = productPersistenceService.getProductById(id);
-
-        if (!Objects.nonNull(product)) {
-            return null;
-        }
-        return product;
-    }
 
     public Long toProductCount(){
         return productPersistenceService.totalProduct();

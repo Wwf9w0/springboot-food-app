@@ -1,5 +1,7 @@
 package com.food.app.persistence.jpa.service;
 
+import com.food.app.persistence.jpa.converter.ProductConverter;
+import com.food.app.persistence.jpa.dto.ProductDto;
 import com.food.app.persistence.jpa.entity.ProductEntity;
 import com.food.app.persistence.jpa.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,27 +17,30 @@ import java.util.Optional;
 public class ProductPersistenceService {
 
     private final ProductRepository productRepository;
+    private final ProductConverter productConverter;
 
-    public List<ProductEntity> getAllProduct(){
-        return (List<ProductEntity>) productRepository.findAll();
+    public List<ProductDto> getAllProduct() {
+        List<ProductEntity> productEntities =  productRepository.findAll();
+        return productConverter.toProductDtoList(productEntities);
     }
 
-    public Optional<ProductEntity> getProductById(Long id){
-        return productRepository.findById(id);
+    public ProductDto getProductById(Long id) {
+        Optional<ProductEntity> product = productRepository.findById(id);
+        return productConverter.toProductDto(product.get());
     }
 
-    public ProductEntity save(ProductEntity product){
+    public ProductEntity save(ProductEntity product) {
         log.info("Product Added");
         return productRepository.save(product);
     }
 
-    public void deleteProduct(Long id){
+    public void deleteProduct(Long id) {
         productRepository.deleteById(id);
-        log.info("Product deleted id: {}" , id);
+        log.info("Product deleted id: {}", id);
     }
 
-    public Long totalProduct(){
-        List<ProductEntity> productList = (List<ProductEntity>) productRepository.findAll();
+    public Long totalProduct() {
+        List<ProductEntity> productList = productRepository.findAll();
         return productList.stream().count();
     }
 

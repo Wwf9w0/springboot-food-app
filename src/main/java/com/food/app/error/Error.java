@@ -15,6 +15,8 @@ public class Error implements Serializable {
     private List<ExtendedError> extendedErrors;
     public List<String> errorInfos;
 
+    public static Error.ErrorBuilder builder (){ return new Error.ErrorBuilder();}
+
     public Error() {
     }
 
@@ -96,6 +98,36 @@ public class Error implements Serializable {
         public Error.ErrorBuilder message (String message){
             this.message = message;
             return this;
+        }
+
+        public Error.ErrorBuilder timestamp(long timestamp){
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public Error.ErrorBuilder extendedErrors(List<ExtendedError> extendedErrors){
+            this.extendedErrors = extendedErrors;
+            return this;
+        }
+
+        public Error.ErrorBuilder errorInfos(List<String> eerrorInfos){
+            this.errorInfos = errorInfos;
+            return this;
+        }
+
+        public Error build(){
+            return new Error(this.code, this.message, this.timestamp, this.extendedErrors, this.errorInfos);
+        }
+
+        @Override
+        public String toString() {
+            return "ErrorBuilder{" +
+                    "code=" + code +
+                    ", message='" + message + '\'' +
+                    ", timestamp=" + timestamp +
+                    ", extendedErrors=" + extendedErrors +
+                    ", errorInfos=" + errorInfos +
+                    '}';
         }
     }
 }

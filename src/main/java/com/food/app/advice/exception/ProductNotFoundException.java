@@ -1,12 +1,14 @@
 package com.food.app.advice.exception;
 
 import com.food.app.advice.ErrorCodes;
+import lombok.Getter;
 
-public class ProductNotFound extends RuntimeException{
+@Getter
+public class ProductNotFoundException extends RuntimeException{
 
     private final int  code;
 
-    public ProductNotFound(){
+    public ProductNotFoundException(){
         super("Product Not found");
         this.code = ErrorCodes.PRODUCT_NOT_FOUND;
     }

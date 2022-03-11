@@ -1,15 +1,19 @@
 package com.food.app.persistence.jpa.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "product")
-@RequiredArgsConstructor
+@Builder
 public class ProductEntity {
 
     @Id
@@ -25,15 +29,14 @@ public class ProductEntity {
     @Column
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    /*@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
-    private OrderEntity order;
+    private OrderEntity order;*/
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   /* @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
-    private CategoryEntity category;
+    private CategoryEntity category;*/
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
 }

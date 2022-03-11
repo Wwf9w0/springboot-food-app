@@ -46,7 +46,7 @@ public class OrderService {
         if (optionalOrder.isPresent()) {
             o.setId(optionalOrder.get().getId());
             o.setNote(optionalOrder.get().getNote());
-            o.setProducts(optionalOrder.get().getProducts());
+          //  o.setProducts(optionalOrder.get().getProducts());
             o.setTotalPrice(optionalOrder.get().getTotalPrice());
             orderPersistenceService.save(o);
         }

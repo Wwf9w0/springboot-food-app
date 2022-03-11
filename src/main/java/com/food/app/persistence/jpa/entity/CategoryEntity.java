@@ -21,6 +21,6 @@ public class CategoryEntity {
     @Column
     private String categoryName;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ProductEntity> products;
+   /* @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ProductEntity> products;*/
 }

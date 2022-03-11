@@ -35,7 +35,6 @@ public class ProductPersistenceService {
     }
 
     public ProductEntity save(ProductEntity product) {
-        log.info("Product Added");
         return productRepository.save(product);
     }
 

@@ -19,16 +19,16 @@ public class RestaurantPersistanceService {
     private final RestaurantRespository restaurantRespository;
     private final RestaurantConverter restaurantConverter;
 
-    public RestaurantEntity save(RestaurantEntity restaurantEntity){
+    public RestaurantEntity save(RestaurantEntity restaurantEntity) {
         return restaurantRespository.save(restaurantEntity);
     }
 
-    public List<RestaurantDto> getAllRestaurants(){
+    public List<RestaurantDto> getAllRestaurants() {
         List<RestaurantEntity> restaurantEntities = restaurantRespository.findAll();
         return restaurantConverter.toRestaurantDtoList(restaurantEntities);
     }
 
-    public RestaurantDto getRestaurantByName(String name){
+    public RestaurantDto getRestaurantByName(String name) {
         Optional<RestaurantEntity> restaurant = restaurantRespository.findByName(name);
         return restaurantConverter.toRestaurantDto(restaurant.get());
     }
